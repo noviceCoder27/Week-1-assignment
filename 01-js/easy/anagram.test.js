@@ -1,24 +1,37 @@
 const isAnagram = require('./anagram')
 
 describe('isAnagram', () => {
-    it('should return true for anagrams', () => {
-      expect(isAnagram('listen', 'silent')).toBe(true);
-      expect(isAnagram('race', 'care')).toBe(true);
-    });
-  
-    it('should return false for non-anagrams', () => {
-      expect(isAnagram('hello', 'world')).toBe(false);
-      expect(isAnagram('test', 'text')).toBe(false);
-    });
-  
-    it('should be case-insensitive', () => {
-      expect(isAnagram('Listen', 'Silent')).toBe(true);
-      expect(isAnagram('Race', 'Care')).toBe(true);
-    });
-  
-    it('should ignore spaces and punctuation', () => {
-      expect(isAnagram('a gentleman', 'elegant man')).toBe(true);
-      expect(isAnagram("an actor's cue", 'a stone cur')).toBe(true);
-    });
-  });
-  
+	test('returns true for anagrams', () => {
+		expect(isAnagram('listen', 'silent')).toBe(true);
+		expect(isAnagram('rail safety', 'fairy tales')).toBe(
+			true
+		);
+		expect(isAnagram('openai', 'aiopen')).toBe(true);
+		expect(isAnagram('', '')).toBe(true);
+	});
+
+	test('returns false for non-anagrams', () => {
+		expect(isAnagram('hello', 'world')).toBe(false);
+		expect(isAnagram('openai', 'open')).toBe(false);
+		expect(isAnagram('hello', 'lhel')).toBe(false);
+		expect(isAnagram('working', 'non')).toBe(false);
+	});
+
+	test('returns true for anagrams with different casing', () => {
+		expect(isAnagram('Debit Card', 'Bad Credit')).toBe(
+			true
+		);
+		expect(
+			isAnagram('School MASTER', 'The ClassROOM')
+		).toBe(true);
+	});
+
+	test('returns true for anagrams with special characters', () => {
+		expect(isAnagram('abc!', '!bac')).toBe(true);
+	});
+
+	test('returns false for non-anagrams with special characters', () => {
+		expect(isAnagram('hello', 'hello!')).toBe(false);
+		expect(isAnagram('openai!', 'open')).toBe(false);
+	});
+});

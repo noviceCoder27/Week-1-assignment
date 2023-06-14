@@ -4,5 +4,18 @@
  */
 
 function sleep (seconds) {
-
+    const myPromise = new Promise((myResolve,myReject) => {
+        setTimeout(() => myResolve('You may continue now'),seconds);
+    })
+    
+    return myPromise.then(value => value);
+    
 }
+
+async function halt() {
+    const value = await sleep(2000);
+    console.log(value);
+    console.log('hello');
+}
+
+halt();

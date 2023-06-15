@@ -27,16 +27,15 @@ function waitThreeSecond() {
     return promise.then(value => value);
 }
 
-function calculateTime() {
+async function calculateTime() {
     const startTime = new Date().getSeconds();
     const oneSecond = waitOneSecond();
     const twoSeconds = waitTwoSecond();
     const threeSeconds = waitThreeSecond();
-    Promise.all([oneSecond,twoSeconds,threeSeconds]).then((values) => {
-        console.log(values);
-        const endTime = new Date().getSeconds();
-        console.log(endTime - startTime);
-    })   
+    const allResolve = await Promise.all([oneSecond,twoSeconds,threeSeconds]);
+    console.log(allResolve);
+    const endTime = new Date().getSeconds();
+    console.log(endTime - startTime);
 }
 
 calculateTime();

@@ -27,9 +27,9 @@ function waitThreeSecond() {
 }
 
 async function callInOrder(startTime) {
-    const promise1 = await waitOneSecond();
-    const promise2 = await waitTwoSecond();
-    const promise3 = await waitThreeSecond();
+    await waitOneSecond();
+    await waitTwoSecond();
+    await waitThreeSecond();
     const endTime = new Date().getSeconds();
     console.log(endTime - startTime);
 }

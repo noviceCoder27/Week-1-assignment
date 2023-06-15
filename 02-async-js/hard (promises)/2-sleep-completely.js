@@ -4,7 +4,7 @@
  */
 
 function sleep (seconds) {
-    const myPromise = new Promise((myResolve,myReject) => {
+    const myPromise = new Promise((myResolve) => {
         setTimeout(() => myResolve('You may continue now'),seconds);
     })
     
